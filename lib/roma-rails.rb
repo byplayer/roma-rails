@@ -1,2 +1,2 @@
-module Roma-rails
+module RomaRails
 end

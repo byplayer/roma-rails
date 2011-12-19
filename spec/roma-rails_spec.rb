@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Roma-rails do
+describe RomaRails do
   it "should be valid" do
-    Roma-rails.should be_a(Module)
+    RomaRails.should be_a(Module)
   end
 end

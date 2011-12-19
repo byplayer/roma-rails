@@ -26,4 +26,37 @@ describe TestController, "update rttable", :type => :controller do
 
     Thread.list.length.should == old_thread_count
   end
+
+  it "check rttable update" do
+    get "test/test2"
+    response.should be_success
+    response.body.should == "test:value"
+
+    pool = Roma::Client::ClientPool.instance
+    old_update_time = nil
+    pool.client do |c|
+      old_update_time = c.rttable_last_update
+    end
+
+    get "test/test2"
+    response.should be_success
+    response.body.should == "test:value"
+
+    pool.client do |c|
+      c.rttable_last_update.should == old_update_time
+    end
+
+    old_interval = RomaRails::RTTableUpdateHook.rttable_update_interval
+    RomaRails::RTTableUpdateHook.rttable_update_interval = 0
+
+    get "test/test2"
+    response.should be_success
+    response.body.should == "test:value"
+
+    pool.client do |c|
+      c.rttable_last_update.should > old_update_time
+    end
+
+    RomaRails::RTTableUpdateHook.rttable_update_interval = old_interval
+  end
 end

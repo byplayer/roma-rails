@@ -11,19 +11,6 @@ module RomaRails
       @roma_servers
     end
 
-    # set routing table update intarval
-    #
-    # default is 60 sec
-    def rttable_update_interval=(v)
-      @rttable_update_interval = v
-    end
-
-    # get routing table update intarval
-    def rttable_update_interval
-      @rttable_update_interval ||= DEFAULT_RTTABLE_UPDATE_INTERVAL
-      @rttable_update_interval
-    end
-
     # use roma client
     def roma_client(type = :default)
       unless block_given?
@@ -40,7 +27,5 @@ module RomaRails
         yield c
       end
     end
-
-    DEFAULT_RTTABLE_UPDATE_INTERVAL = 60
   end
 end

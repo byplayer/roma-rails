@@ -1,6 +1,4 @@
-require File.expand_path(File.join('..', '..', 'spec_helper'),
-                         File.dirname(__FILE__))
-
+require 'spec_helper'
 describe Rack::Session::Roma do
   session_key = Rack::Session::Abstract::ID::DEFAULT_OPTIONS[:key]
   dummy_app = lambda do |env|

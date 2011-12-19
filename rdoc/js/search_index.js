@@ -1,0 +1,1 @@
+var search_data = {"index":{"searchIndex":["roma","readme"],"longSearchIndex":["roma",""],"info":[["Roma","","Roma.html","",""],["README","","README_rdoc.html","","<p>\n\n<pre>roma-rails is rails plugin to use ROMA in rails\nCopyright (C) 2011 Rakuten, Inc.</pre>\n<p>\n"]]}}

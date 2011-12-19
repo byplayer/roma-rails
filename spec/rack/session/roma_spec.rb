@@ -13,14 +13,6 @@ describe Rack::Session::Roma do
     Roma::Client::ClientPool.instance.servers = servers
   end
 
-  it "faults on no connection" do
-    lambda{
-      Roma::Client::ClientPool.instance.servers = []
-      pool = Rack::Session::Roma.new(dummy_app)
-      res = Rack::MockRequest.new(pool).get("/")
-    }.should raise_error
-  end
-
   it "creates a new cookie" do
     pool = Rack::Session::Roma.new(dummy_app)
     res = Rack::MockRequest.new(pool).get("/")

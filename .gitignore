@@ -4,3 +4,9 @@ pkg/
 spec/dummy/db/*.sqlite3
 spec/dummy/log/*.log
 spec/dummy/tmp/
+rdoc/
+vendor
+GPATH
+GRTAGS
+GSYMS
+GTAGS

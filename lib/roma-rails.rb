@@ -1,2 +1,3 @@
-module RomaRails
-end
+require File.join(File.dirname(__FILE__),
+                  'rack', 'session', 'roma')
+

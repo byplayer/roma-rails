@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 module RomaRails
+  # This module provide Roma::Client::ClientPool access interface.
+  #
+  # You can use ClientPool if you don't use this module.
+  # But you can use this module and roma_client method to access RomaClient,
+  # Your client doesn't start routing table sync proc.
   module RomaClientAccess
-    # set roma server configuration
-    def roma_servers=(s, type = :default)
-      @roma_servers = s
-    end
 
-    # get roma server configuration
-    def roma_servers(type = :default)
-      @roma_servers
+    # get instance
+    def roma_client_pool(type = :default)
+      Roma::Client::ClientPool.instance(type)
     end
 
     # use roma client
@@ -17,9 +18,8 @@ module RomaRails
         raise 'client_pool method should be called with block'
       end
 
-      pool = Roma::Client::ClientPool.instance(type)
+      pool = roma_client_pool(type)
       if pool.pool_count == 0
-        pool.servers = roma_servers(type)
         pool.start_sync_routing_proc = false
       end
 

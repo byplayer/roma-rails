@@ -9,8 +9,9 @@ module RomaRails
           clients.each_index do |i|
             if (Time.now - clients[i].rttable_last_update) >=
                 RTTableUpdateHook.rttable_update_interval
-              logger.info("update ROMA rttable(#{k},#{i})")
+              logger.info("update ROMA rttable(#{k},#{i}) start")
               clients[i].update_rttable
+              logger.info("update ROMA rttable(#{k},#{i}) end")
             end
           end
         end

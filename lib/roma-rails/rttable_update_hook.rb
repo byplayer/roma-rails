@@ -10,7 +10,11 @@ module RomaRails
             if (Time.now - clients[i].rttable_last_update) >=
                 RTTableUpdateHook.rttable_update_interval
               logger.info("update ROMA rttable(#{k},#{i}) start")
-              clients[i].update_rttable
+              begin
+                clients[i].update_rttable
+              rescue Exception => e
+                logger.error("update ROMA rttable error: #{e.to_log_msg}")
+              end
               logger.info("update ROMA rttable(#{k},#{i}) end")
             end
           end
@@ -31,7 +35,7 @@ module RomaRails
       @@rttable_update_interval
     end
 
-    @@rttable_update_interval = 60
+    @@rttable_update_interval = 10
 
     def logger
       ActionController::Base.logger

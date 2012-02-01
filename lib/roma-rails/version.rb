@@ -9,7 +9,7 @@ module RomaRails
     MINOR = 0
 
     # tiny version number
-    TINY = 2
+    TINY = 3
 
     # version information string
     STRING = "#{MAJOR}.#{MINOR}.#{TINY}"

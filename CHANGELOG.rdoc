@@ -1,5 +1,9 @@
 = rails 3.1.x plugin to use ROMA.
 
+== v0.0.3
+- change interval of routing table update from 60 sec to 10 sec.
+- add Exception handler when routing table update
+
 == v0.0.2
 - add log of RTTable update time
 
